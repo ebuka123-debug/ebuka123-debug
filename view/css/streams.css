@@ -1,0 +1,93 @@
+#color{background-image: linear-gradient(346deg, rgba(55, 55, 55,0.04) 0%, rgba(55, 55, 55,0.04) 22%,rgba(140, 140, 140,0.04) 22%, rgba(140, 140, 140,0.04) 69%,rgba(225, 225, 225,0.04) 69%, rgba(225, 225, 225,0.04) 100%),linear-gradient(31deg, rgba(55, 55, 55,0.04) 0%, rgba(55, 55, 55,0.04) 42%,rgba(140, 140, 140,0.04) 42%, rgba(140, 140, 140,0.04) 85%,rgba(225, 225, 225,0.04) 85%, rgba(225, 225, 225,0.04) 100%),linear-gradient(55deg, rgba(55, 55, 55,0.04) 0%, rgba(55, 55, 55,0.04) 13%,rgba(140, 140, 140,0.04) 13%, rgba(140, 140, 140,0.04) 72%,rgba(225, 225, 225,0.04) 72%, rgba(225, 225, 225,0.04) 100%),linear-gradient(90deg, rgb(232,31,62),rgb(232,31,62));}
+
+/* #color{background-image: linear-gradient(135deg, rgba(100,100,100, 0.5) 0%, rgba(100,100,100, 0.5) 10%,transparent 10%, transparent 19%,rgba(44,36,44, 0.5) 19%, rgba(44,36,44, 0.5) 27%,rgba(100,100,100, 0.5) 27%, rgba(100,100,100, 0.5) 53%,transparent 53%, transparent 56%,rgba(20,17,17, 0.5) 56%, rgba(20,17,17, 0.5) 61%,rgba(34,31,31, 0.5) 61%, rgba(34,31,31, 0.5) 100%),linear-gradient(45deg, rgb(63,62,62) 0%, rgb(63,62,62) 8%,transparent 8%, transparent 9%,transparent 9%, transparent 10%,rgb(63,62,62) 10%, rgb(63,62,62) 14%,rgb(57,55,57) 14%, rgb(57,55,57) 50%,rgb(32,18,29) 50%, rgb(32,18,29) 97%,rgb(77,66,66) 97%, rgb(77,66,66) 100%),linear-gradient(90deg, rgb(255,255,255),rgb(255,255,255));} */
+
+body{background-color: #E0DEE4;}
+
+.off-canvas-color{background-color: #E81F3E;}
+
+.text-color{ color: #ecebeb !important;}
+
+.text-color:hover{color: #ecebeb !important;}
+
+.height{height:  15vh;
+            }
+
+.none{display: none;}
+
+.none-determinant:hover .none{display: block}
+
+.width{width: 20px;}
+
+.font-size{font-size: 11px;}
+
+#width{width: 50px;}
+
+.link-none{text-decoration: none;}
+
+.footer-content-color{color: #E81F3E;}
+
+.text-decoration{text-decoration: none;}
+
+.text-dec:hover{background-color: silver;
+                                        color: white;}
+
+.navbar2{width: 100%;
+                height: 45px;
+        
+                display: flex;
+                overflow-x: auto;}
+
+.fit-content{min-width: fit-content;}
+
+.fit-content:hover{border-bottom: 3px solid red;
+     }
+
+.navbar2::-webkit-scrollbar{height: 2px;}
+
+.bottom-border{border-bottom: 2px solid red;}
+
+.on-hover:hover{border-bottom: 3px solid red;
+    color: red; }
+
+.phone-top{width: 100%;
+                    height: 25vh;
+                    display: flex;
+                    overflow-x: auto;}
+
+.phone-top-inner{min-width: 90%;
+                                height: 100%;
+                                background-image: linear-gradient(0deg, rgba(3, 121, 241,0.5) 0%, rgba(3, 121, 241,0.5) 9%,transparent 9%, transparent 16%,rgba(11, 75, 199,0.5) 16%, rgba(11, 75, 199,0.5) 49%,rgba(9, 86, 209,0.5) 49%, rgba(9, 86, 209,0.5) 100%),linear-gradient(135deg, rgb(3, 121, 241) 0%, rgb(3, 121, 241) 31%,rgb(13, 63, 188) 31%, rgb(13, 63, 188) 37%,transparent 37%, transparent 56%,rgb(9,86,209) 56%, rgb(9,86,209) 100%),linear-gradient(90deg, rgb(232,31,62),rgb(232,31,62));}
+
+.testing{width: 100%;
+                height: 30vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background:  linear-gradient(-192deg,#cd2529,#be2022 48.5%,#b70709 49%,#a00000);}
+
+.baseline{display: flex;
+                border: 1px solid green;
+                justify-content: baseline;
+                align-items: center;}
+
+.font-family{font-family: Cascadia Code;}
+
+.my-background{ background:  linear-gradient(-192deg,#E81F3E,#be2022 48.5%,#b70709 49%,#a00000);}
+
+.my-background2{ background-image: linear-gradient(0deg, rgba(3, 121, 241,0.5) 0%, rgba(3, 121, 241,0.5) 9%,transparent 9%, transparent 16%,rgba(11, 75, 199,0.5) 16%, rgba(11, 75, 199,0.5) 49%,rgba(9, 86, 209,0.5) 49%, rgba(9, 86, 209,0.5) 100%),linear-gradient(135deg, rgb(3, 121, 241) 0%, rgb(3, 121, 241) 31%,rgb(13, 63, 188) 31%, rgb(13, 63, 188) 37%,transparent 37%, transparent 56%,rgb(9,86,209) 56%, rgb(9,86,209) 100%),linear-gradient(90deg, rgb(232,31,62),rgb(232,31,62));}
+
+.position-absolute{
+    position: relative;
+    left: 46%;
+    top: 20%;
+}
+
+body{overflow-x: hidden;
+            }
+
+ .footer-content-color{color: #E81F3E;}
+
+.footer-span{font-size: 11px;}
+
+.footer-font-size{font-size: 13px;}

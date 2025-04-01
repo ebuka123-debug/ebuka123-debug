@@ -1,0 +1,135 @@
+#color{background-image: linear-gradient(346deg, rgba(55, 55, 55,0.04) 0%, rgba(55, 55, 55,0.04) 22%,rgba(140, 140, 140,0.04) 22%, rgba(140, 140, 140,0.04) 69%,rgba(225, 225, 225,0.04) 69%, rgba(225, 225, 225,0.04) 100%),linear-gradient(31deg, rgba(55, 55, 55,0.04) 0%, rgba(55, 55, 55,0.04) 42%,rgba(140, 140, 140,0.04) 42%, rgba(140, 140, 140,0.04) 85%,rgba(225, 225, 225,0.04) 85%, rgba(225, 225, 225,0.04) 100%),linear-gradient(55deg, rgba(55, 55, 55,0.04) 0%, rgba(55, 55, 55,0.04) 13%,rgba(140, 140, 140,0.04) 13%, rgba(140, 140, 140,0.04) 72%,rgba(225, 225, 225,0.04) 72%, rgba(225, 225, 225,0.04) 100%),linear-gradient(90deg, rgb(232,31,62),rgb(232,31,62));}
+
+.my-container{width: 100%;
+               min-height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                }
+
+a{
+    text-decoration: none;
+}
+
+.news{
+    height: 20vh;
+}
+
+.features{
+    width: 100%;
+    height: 85vh;
+    
+}
+.trending-image-box{
+    width: 9%;
+    height: 75%;
+    /* border: 2px solid red; */
+    overflow:hidden;
+}
+
+.trending-image-box img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.top-delete-edit-section{
+    width: 9%;
+    height: 100%;
+    /* border: 1px solid orangered; */
+}
+
+.top-delete-edit-section-circle{
+    width: 85%;
+    height: 65%;
+    /* border: 1px solid black; */
+}
+
+.top-delete-edit-section-circle:hover{
+background-color: silver;
+
+}
+
+.message-no{padding: 6px;}
+
+.friend-img{width: 100%;
+                    height: 85%;
+                    border: 2px solid red;
+                    overflow: hidden;
+                    border-radius: 90%;
+                   }
+
+                   
+.message-width{ width: 100%;
+    height: 10vh;
+    display: flex;
+    overflow: hidden;
+    
+}
+
+                    
+
+.image-box{
+    width: 9%;
+    height: 85%;
+    /* border: 2px solid red; */
+    overflow:hidden;
+}
+
+
+
+.image-box img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.text-container{
+    width: 70%;
+    height: 4rem;
+    /* border: 1px solid black; */
+    /* display: flex;
+    align-items: center; */
+}
+
+.text-space{
+    /* border: 2px solid green; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display:-webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.delete-edit-section{
+    width: 9%;
+    height: 100%;
+    /* border: 1px solid orangered; */
+}
+
+.delete-edit-section-circle{
+    width: 75%;
+    height: 70%;
+    /* border: 1px solid black; */
+}
+
+.delete-edit-section-circle:hover{
+    background-color: silver;
+    
+}
+
+.unwanted-delete-edit-section{
+   
+   
+    display: none;
+}
+
+.unwanted-delete-edit-section-circle{
+    width: 70%;
+    height: 75%;
+    /* border: 1px solid black; */
+}
+
+.unwanted-delete-edit-section-circle:hover{
+    background-color: silver;
+}

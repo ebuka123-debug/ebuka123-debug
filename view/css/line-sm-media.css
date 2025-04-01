@@ -1,0 +1,10 @@
+@media only  screen and (max-width: 600px){
+    .line-sm{font-size: 11px;}
+
+    .my-container-lm{margin-right: 0;
+                                    margin-left: 0;
+                                    padding-right: 0;
+                                    padding-left: 0;}
+
+    .line-sm-2{font-size: 12px;}
+}

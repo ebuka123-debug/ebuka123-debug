@@ -158,7 +158,15 @@ if(isset($_SESSION["logged-in"]) || isset($_SESSION['signed-in'])){
                 <div class="card ">
                     <div class="card-header text-start text-white fs-5" id="color">Country</div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"> <input type="search" class="form-control" placeholder="Search" aria-label="Search"></li>
+                        <div class="list-group-item">
+                            <form action="/search" method="post">
+                                <div class="input-group">
+                                    <button type="submit" name="submit" class="input-group-text btn btn-danger" id="color"><i class="fa fa-search text-white"></i></button>
+                                    <input type="search" name="search" class="form-control" placeholder="Search" aria-label="Search">
+                                </div>
+                            </form>
+                        </div>
+                        
                         <li class="list-group-item ms-1"><img src="/view/images/france.jpg" class="width"> France</li>
                         <li class="list-group-item ms-1"><img src="/view/images/germany.jpg" class="width"> Germany</li>
                         <li class="list-group-item ms-1"><img src="/view/images/italy.jpg" class="width"> Italy</li>

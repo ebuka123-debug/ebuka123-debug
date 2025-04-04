@@ -28,11 +28,13 @@ require_once(__DIR__."/library/helpers.php");
 require_once(__DIR__."/library/requestMethod.php");
 require_once(__DIR__."/library/newsImageAuth.php");
 require_once(__DIR__."/library/newsAuth.php");
+require_once(__DIR__."/library/singleImageAuth.php");
 
 
 
 
 //controller folder
+require_once(__DIR__."/controller/SearchController.php"); //SearchController
 require_once(__DIR__."/controller/ViewController.php");  //ViewController
 require_once(__DIR__."/controller/FootballController.php");  //FootballController
 require_once(__DIR__."/controller/NewsController.php");  //NewsController
@@ -41,6 +43,7 @@ require_once(__DIR__."/controller/LoginController.php");  //LoginController
 require_once(__DIR__."/controller/SignUpController.php"); //SignupController
 require_once(__DIR__."/controller/ChangePasswordController.php");  //ChangePasswordController
 require_once(__DIR__."/controller/AdminController.php");  //AdminController
+
  
 
 

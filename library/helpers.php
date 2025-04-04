@@ -56,3 +56,35 @@ function getTrendingNews(array $news, $newsModel, array $trendingNews){
     // var_dump($modifiedtrendingNews);
 }
 
+function checkRegionDatas($regionName,$selectedRegion){
+    if(!empty($regionName))
+    {
+        if($selectedRegion == "country")
+        {
+            return true;
+        } else{
+           if($selectedRegion == "others")
+           {
+                return true;
+           } else{
+                throw new Exception("this selected region is not accepted");
+           }
+        }
+    } else{
+        throw new Exception("region name is not given");
+    }
+}
+
+function countryOrothers($selectedRegion)
+{
+    if($selectedRegion == "country")
+    {
+        return "country";
+    } else{
+        if($selectedRegion == "others")
+        {
+            return "others";
+        }
+    }
+}
+

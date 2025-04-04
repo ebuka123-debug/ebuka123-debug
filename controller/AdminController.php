@@ -18,6 +18,87 @@ class AdminController{
         
     }
 
+    public function regionCategory()
+    {
+      $this->view->Display("admin","region-upload.php");
+    }
+
+    public function regionUpload()
+    {
+      try {
+
+        // echo "this is where we validate the region uploads";
+        if(requestMethod() == "POST" && isset($_POST["region-upload"]))
+        {
+
+        $regionName = $_POST["region-name"];
+        $selectedRegion = $_POST["selected-region"];
+
+        if(checkRegionDatas($regionName,$selectedRegion))
+        {
+          $path = countryOrothers($selectedRegion);
+
+          $authRegionImage = singleImageAuth($path);
+
+          if($authRegionImage['status'] == true)
+          {
+          
+        
+            // var_dump($_POST,$_FILES,$tmpName,$location,$regionImageName);
+            if(move_uploaded_file($authRegionImage["tmp_name"],$authRegionImage["storage_location"].$authRegionImage["file_name"]))
+            {
+              $status = true;
+            } else{
+                throw new Exception("error while uploading file");
+            }
+
+            if(isset($status))
+            {
+              $adminModel = new adminModel();
+
+              if($adminModel->regionUpload($regionName,$authRegionImage["file_name"],$selectedRegion))
+              {
+                  $_SESSION["region-uploaded"] = "region category uploaded successfully";
+                  header("location: /admin/regionCategory");
+              }
+             
+            }
+          }
+        }
+
+       
+
+          
+
+        //  echo singleImageAuth(); 
+        } 
+        
+      } catch (\Exception $e) {
+        //throw $th;
+
+        $error = $e->getMessage();
+        
+        $_SESSION["region-upload-error"] = $error;
+        $_SESSION["region-name"] = $_POST["region-name"];
+        header("location: /admin/regionCategory");
+      }
+    }
+
+    public function searchCategory()
+    {
+      $this->view->Display("admin","search-upload.php");
+    }
+
+    public function searchUpload()
+    {
+      // echo "this is where we validate the search uploads";
+       if(requestMethod() == "POST")
+       {
+        echo "this is post request";
+       } 
+    }
+
+
     public function editNews()
     {
         // $view = new ViewController();
@@ -151,4 +232,6 @@ class AdminController{
 
       
     }
+
+
 }

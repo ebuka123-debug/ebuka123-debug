@@ -19,30 +19,40 @@ class Route extends Router{
                         $streams = new StreamsController();
                         $this->ShowPages($streams,$method,$parameter); //showPages to be changed to view
                     break;
-                    case "login";
+                    case "login":
                         $login = new LoginController();
                         // $method??"loginPage";
                         $accessedMethod = ($method == NULL)? "loginPage" : $method;
                         $this->ShowPages($login,$accessedMethod,$parameter);
                     break;
 
-                    case "signup";
+                    case "signup":
                         $signup = new SignUpController();
                         $accessedMethod = ($method == NULL)? "signupPage" : $method;
                         $this->ShowPages($signup,$accessedMethod,$parameter);
                     break;
 
-                    case "changepassword";
+                    case "changepassword":
                         $changePassword = new ChangePasswordController();
                         $accessedMethod = ($method == NULL)? "changePasswordPage" : $method;
                         $this->ShowPages($changePassword,$accessedMethod,$parameter);
                     break;
 
-                    case "admin";
+                    case "admin":
                         $admin = new AdminController();
                         $this->ShowPages($admin,$method,$parameter);
                     break;
 
+                    case "search":
+                        $search = new SearchController();
+                        $method = "search";
+                        $this->ShowPages($search,$method,$parameter);
+                    break;
+
+
+                    default:
+                        echo "we are hitting the default";
+                    break;
 
 
                 }

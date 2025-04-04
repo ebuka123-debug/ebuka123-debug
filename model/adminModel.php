@@ -8,6 +8,32 @@ class adminModel extends DbConnection{
         $this->conn = $this->dbConnect();
     }
 
+    public function regionUpload($regionName,$regionImage,$countryOrOthers)
+    {
+        $regionID = uniqid();
+        $statement = "INSERT INTO region (
+                    region_id,
+                    region_name,
+                    region_image,
+                    country_or_others
+                )
+                    VALUES (
+                    '$regionID',
+                    '$regionName',
+                    '$regionImage',
+                    '$countryOrOthers'
+                    )
+        ";
+
+        if($this->conn->query($statement) === TRUE)
+        {
+            return true;
+           
+        } else{
+            throw new Exception ("problem while uploading region details");
+        }
+    }
+
     public function addNewsImage(array $details)
     {
 

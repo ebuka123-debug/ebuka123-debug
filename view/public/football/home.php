@@ -2,7 +2,7 @@
 if(isset($_SESSION["logged-in"]) || isset($_SESSION['signed-in'])){
 
 } else{
-    // echo "lets see";
+    
     header("location: /login");
     return;
 }

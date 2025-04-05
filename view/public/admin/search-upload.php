@@ -1,3 +1,7 @@
+<?php
+  $adminModel = new adminModel();
+  $countries = $adminModel->country();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,10 +56,13 @@
                                 <input class="mt-2 w-100 form-control"  type="file" name="competition-image[]">
                             </div>
                             <div class="col-12 col-lg-4">
-                                <label>Select region</label>
+                                <label>Select country</label>
                                 <!-- available countries will be displayed here by getting it from the database -->
-                                <select class="form-select" aria-label="Default select example">
-                                    <option value="country">Country</option>
+                                <select class="form-select" aria-label="Default select example" name="country">
+                                    <?php foreach ($countries as $key => $value):?>
+                                        <option value="<?=$value?>"><?= $value ?></option>
+                                    <?php endforeach?>
+                                    <option value="country">germany</option>
                                 </select>
                             </div>
                             
@@ -63,7 +70,7 @@
 
 
                         <div class="row mt-3 mt-lg-0 d-flex justify-content-evenly">
-                            <input type="submit" value="Upload" name="news-upload" class="w-50 btn mb-3 text-white" id="color">
+                            <input type="submit" value="Upload" name="search-upload" class="w-50 btn mb-3 text-white" id="color">
                         </div>
 
                        

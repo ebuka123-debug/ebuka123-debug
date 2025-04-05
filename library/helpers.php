@@ -1,4 +1,5 @@
 <?php
+
 function RouteUri($controller,$method,$parameter = NULL){
     if($parameter == NULL){
         return "/$controller/$method";
@@ -56,7 +57,7 @@ function getTrendingNews(array $news, $newsModel, array $trendingNews){
     // var_dump($modifiedtrendingNews);
 }
 
-function checkRegionDatas($regionName,$selectedRegion){
+function checkRegionDatas($regionName,$selectedRegion){     //checks if it is country or others (region)
     if(!empty($regionName))
     {
         if($selectedRegion == "country")
@@ -75,7 +76,7 @@ function checkRegionDatas($regionName,$selectedRegion){
     }
 }
 
-function countryOrothers($selectedRegion)
+function countryOrothers($selectedRegion)   //checks if the selected region is country or others
 {
     if($selectedRegion == "country")
     {
@@ -87,4 +88,3 @@ function countryOrothers($selectedRegion)
         }
     }
 }
-

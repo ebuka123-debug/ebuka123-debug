@@ -28,50 +28,41 @@ class AdminController{
       try {
 
         // echo "this is where we validate the region uploads";
-        if(requestMethod() == "POST" && isset($_POST["region-upload"]))
-        {
+        if(requestMethod() == "POST" && isset($_POST["region-upload"])){
 
-        $regionName = $_POST["region-name"];
-        $selectedRegion = $_POST["selected-region"];
+          $regionName = $_POST["region-name"];
+          $selectedRegion = $_POST["selected-region"];
 
-        if(checkRegionDatas($regionName,$selectedRegion))
-        {
-          $path = countryOrothers($selectedRegion);
+          if(checkRegionDatas($regionName,$selectedRegion)){
 
-          $authRegionImage = singleImageAuth($path);
+            $countryOrOthers = countryOrothers($selectedRegion);   
+            $path = "view/images/region/$countryOrOthers/";     //this is the path or folder where the picture or image will be saved
 
-          if($authRegionImage['status'] == true)
-          {
-          
-        
-            // var_dump($_POST,$_FILES,$tmpName,$location,$regionImageName);
-            if(move_uploaded_file($authRegionImage["tmp_name"],$authRegionImage["storage_location"].$authRegionImage["file_name"]))
-            {
-              $status = true;
-            } else{
-                throw new Exception("error while uploading file");
-            }
+            $authRegionImage = singleImageAuth('region-image');
 
-            if(isset($status))
-            {
-              $adminModel = new adminModel();
-
-              if($adminModel->regionUpload($regionName,$authRegionImage["file_name"],$selectedRegion))
-              {
-                  $_SESSION["region-uploaded"] = "region category uploaded successfully";
-                  header("location: /admin/regionCategory");
+            if($authRegionImage['status'] == true){
+              // var_dump($_POST,$_FILES,$tmpName,$location,$regionImageName);
+              if(move_uploaded_file($authRegionImage["tmp_name"],$path.$authRegionImage["file_name"])){
+                $status = true;
+              } else{
+                  throw new Exception("error while uploading file");
               }
-             
+
+              if(isset($status)){
+                $adminModel = new adminModel();
+
+                if($adminModel->regionUpload($regionName,$authRegionImage["file_name"],$selectedRegion)){
+                    $_SESSION["region-uploaded"] = "region category uploaded successfully";
+                    header("location: /admin/regionCategory");
+                }
+              
+              }
             }
           }
+
+        } else{
+            throw new Exception("invalid request");
         }
-
-       
-
-          
-
-        //  echo singleImageAuth(); 
-        } 
         
       } catch (\Exception $e) {
         //throw $th;
@@ -91,11 +82,79 @@ class AdminController{
 
     public function searchUpload()
     {
-      // echo "this is where we validate the search uploads";
-       if(requestMethod() == "POST")
-       {
-        echo "this is post request";
-       } 
+      try {
+
+        // echo "this is where we validate the region uploads";
+        if(requestMethod() == "POST" && isset($_POST["search-upload"])){
+
+          
+          $competitionName = $_POST["competition-name"];
+          $competitionCountry = $_POST["country"];
+
+
+          if(!empty(trim($competitionName))){
+              
+              if(!empty(trim($competitionCountry))){
+               
+                $adminModel = new adminModel();
+                $countrExists = $adminModel->countryExists($competitionCountry);
+
+                if($countrExists){    //checks if country (name of country) exists in the database
+                  $path = "competition"; //this is the path or folder where the picture or image will be saved
+
+                  $authCompetitionImage = singleImageAuth($path,'competition-image');
+      
+                  if($authCompetitionImage['status'] == true)
+                  {
+                  
+                      echo "image is authenticated";
+                    // var_dump($_POST,$_FILES,$tmpName,$location,$regionImageName);
+                      // if(move_uploaded_file($authRegionImage["tmp_name"],$authRegionImage["storage_location"].$authRegionImage["file_name"]))
+                      // {
+                      //   $status = true;
+                      // } else{
+                      //     throw new Exception("error while uploading file");
+                      // }
+      
+                      // if(isset($status))
+                      // {
+                      //   $adminModel = new adminModel();
+        
+                      //   if($adminModel->regionUpload($regionName,$authRegionImage["file_name"],$selectedRegion))
+                      //   {
+                      //       $_SESSION["region-uploaded"] = "region category uploaded successfully";
+                      //       header("location: /admin/searchCategory");
+                      //   }
+                      
+                      // }
+                  }
+                }
+              } else{
+                throw new Exception("please input a country");
+              }
+          } else{
+              throw new Exception ("please input a competition name");
+          }
+
+
+        //  echo singleImageAuth(); 
+        } else{
+          throw new Exception ("invalid request");
+        }
+        
+      } catch (\Exception $e) {
+        //throw $th;
+
+        $error = $e->getMessage();
+
+        echo $error;
+
+        die;
+        
+        $_SESSION["region-upload-error"] = $error;
+        $_SESSION["region-name"] = $_POST["region-name"];
+        header("location: /admin/regionCategory");
+      }
     }
 
 

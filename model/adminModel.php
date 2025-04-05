@@ -34,6 +34,41 @@ class adminModel extends DbConnection{
         }
     }
 
+    public function countryExists($countryName)
+    {
+        $statement = "SELECT region_name FROM region WHERE region_name = '$countryName' ";
+        $result = $this->conn->query($statement);
+
+        if($result->num_rows > 0){
+            if($result-> num_rows == 1){
+                return true;
+            } else{
+                //this is as a result of country name appearing more than once in the region database
+                throw new Exception("it seems to be that a country name appeared more than once ({$result->num_rows})");
+            }
+        } else{
+            throw new Exception ("Select a region that has been uploaded"); //This throws an error when the region  or country is not found in the database
+        }
+    }
+
+    public function country() //This method brings out a particular country / country's name
+    {
+        $statement = "SELECT region_name FROM region";
+        $result = $this->conn->query($statement);
+        $countries = [];
+
+        if($result->num_rows > 0){      //checks if the number of selected rows is greater than 0
+            while($row = $result->fetch_assoc()){   //assign array of the selected items to the variable $row
+               array_push($countries,$row["region_name"]);
+            }
+
+            return $countries;
+         
+        } else{
+            throw new Exception ("error while selecting");
+        }
+    }
+
     public function addNewsImage(array $details)
     {
 

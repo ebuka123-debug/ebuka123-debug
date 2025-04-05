@@ -38,7 +38,7 @@ class AdminController{
             $countryOrOthers = countryOrothers($selectedRegion);   
             $path = "view/images/region/$countryOrOthers/";     //this is the path or folder where the picture or image will be saved
 
-            $authRegionImage = singleImageAuth('region-image');
+            $authRegionImage = singleImageAuth('region-image','region');
 
             if($authRegionImage['status'] == true){
               // var_dump($_POST,$_FILES,$tmpName,$location,$regionImageName);
@@ -65,8 +65,7 @@ class AdminController{
         }
         
       } catch (\Exception $e) {
-        //throw $th;
-
+    
         $error = $e->getMessage();
         
         $_SESSION["region-upload-error"] = $error;
@@ -75,12 +74,12 @@ class AdminController{
       }
     }
 
-    public function searchCategory()
+    public function competitionCategory()
     {
       $this->view->Display("admin","search-upload.php");
     }
 
-    public function searchUpload()
+    public function competitionUpload()
     {
       try {
 
@@ -100,33 +99,35 @@ class AdminController{
                 $countrExists = $adminModel->countryExists($competitionCountry);
 
                 if($countrExists){    //checks if country (name of country) exists in the database
-                  $path = "competition"; //this is the path or folder where the picture or image will be saved
+                  
+                  $path = "view/images/competition/";   //this is the path or folder where the picture or image will be saved
 
-                  $authCompetitionImage = singleImageAuth($path,'competition-image');
+                  $authCompetitionImage = singleImageAuth('competition-image','competition');
       
                   if($authCompetitionImage['status'] == true)
                   {
                   
-                      echo "image is authenticated";
-                    // var_dump($_POST,$_FILES,$tmpName,$location,$regionImageName);
-                      // if(move_uploaded_file($authRegionImage["tmp_name"],$authRegionImage["storage_location"].$authRegionImage["file_name"]))
-                      // {
-                      //   $status = true;
-                      // } else{
-                      //     throw new Exception("error while uploading file");
-                      // }
+                   
+                 
+                      if(move_uploaded_file($authCompetitionImage["tmp_name"],$path.$authCompetitionImage["file_name"]))
+                      {
+                        $status = true;
+                      } else{
+                          throw new Exception("error while uploading file");
+                      }
       
-                      // if(isset($status))
-                      // {
-                      //   $adminModel = new adminModel();
+                      if(isset($status))
+                      {
+                        $adminModel = new adminModel();
         
-                      //   if($adminModel->regionUpload($regionName,$authRegionImage["file_name"],$selectedRegion))
-                      //   {
-                      //       $_SESSION["region-uploaded"] = "region category uploaded successfully";
-                      //       header("location: /admin/searchCategory");
-                      //   }
+                        if($adminModel->competitionUpload($competitionName,$authCompetitionImage["file_name"],$competitionCountry))
+                        {
+                            $_SESSION["competition-uploaded"] = "competition category uploaded successfully";
+                            
+                            header("location: /admin/competitionCategory");
+                        }
                       
-                      // }
+                      }
                   }
                 }
               } else{
@@ -147,13 +148,10 @@ class AdminController{
 
         $error = $e->getMessage();
 
-        echo $error;
-
-        die;
         
-        $_SESSION["region-upload-error"] = $error;
-        $_SESSION["region-name"] = $_POST["region-name"];
-        header("location: /admin/regionCategory");
+        $_SESSION["competition-upload-error"] = $error;
+        $_SESSION["competition-name"] = $_POST["competition-name"];
+        header("location: /admin/competitionCategory");
       }
     }
 

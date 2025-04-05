@@ -34,22 +34,22 @@
                              @ powered by Moral base L.T.D
                         </span>
                     </div> -->
-                    <?php if(isset($_SESSION["search-upload-error"])):?>
+                    <?php if(isset($_SESSION["competition-upload-error"])):?>
                         <div class="alert alert-danger text-center" role="alert">
-                            <span><span><?php echo  $_SESSION["search-upload-error"]?></span></span>
+                            <span><span><?php echo  $_SESSION["competition-upload-error"]?></span></span>
                         </div>
 
-                    <?php elseif(isset($_SESSION["search-uploaded"])):?>
+                    <?php elseif(isset($_SESSION["competition-uploaded"])):?>
                         <div class="alert alert-success text-center" role="alert">
-                            <span><span><?php echo  $_SESSION["search-uploaded"]?></span></span>
+                            <span><span><?php echo  $_SESSION["competition-uploaded"]?></span></span>
                         </div>
                     <?php endif ?>
-                    <form action="/admin/searchUpload/" method="post" enctype="multipart/form-data"> 
-                        <label for="" class="mb-2 fs-4">SEARCH</label>
+                    <form action="/admin/competitionUpload/" method="post" enctype="multipart/form-data"> 
+                        <label for="" class="mb-2 fs-4">Competition</label>
                         <div class="row mb-lg-3 d-flex justify-content-evenly">
                             <div class="col-12 col-lg-4">
                                 <label>Enter Competition Name</label>
-                                <input class="mt-2 w-100 form-control"  type="text" name="competition-name">
+                                <input class="mt-2 w-100 form-control"  type="text" name="competition-name" <?php if(isset($_SESSION['competition-name'])):?> value = "<?=$_SESSION["competition-name"]?>" <?php endif?>>
                             </div>
                             <div class="col-12 col-lg-4">
                                 <label>Enter Competition Image</label>
@@ -58,11 +58,10 @@
                             <div class="col-12 col-lg-4">
                                 <label>Select country</label>
                                 <!-- available countries will be displayed here by getting it from the database -->
-                                <select class="form-select" aria-label="Default select example" name="country">
+                                <select class="form-select mt-2" aria-label="Default select example" name="country">
                                     <?php foreach ($countries as $key => $value):?>
                                         <option value="<?=$value?>"><?= $value ?></option>
                                     <?php endforeach?>
-                                    <option value="country">germany</option>
                                 </select>
                             </div>
                             
@@ -86,5 +85,5 @@
         
         <script src="../css/bootstrap-5.2.0-dist/js/bootstrap.js"></script>
 </body>
-<?php unset($_SESSION["news-upload-error"],$_SESSION["news-uploaded"]) ?>
+<?php unset($_SESSION["competition-upload-error"],$_SESSION["competition-uploaded"],$_SESSION["competition-name"]) ?>
 </html>

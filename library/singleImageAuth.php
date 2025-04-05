@@ -1,6 +1,6 @@
 <?php
 
-function singleImageAuth($fileSUperglobalName){ //the parameter here would be others or country which would be automatically added to the path given at line 16
+function singleImageAuth($fileSUperglobalName,$regionOrcountry){ //the parameter here would be others or country which would be automatically added to the path given at line 16
 
 
    $regionImageName = $_FILES[$fileSUperglobalName]['name'][0];      //This is the image file name for region
@@ -34,6 +34,6 @@ function singleImageAuth($fileSUperglobalName){ //the parameter here would be ot
             throw new Exception("this size is not appropriate");
         }
     } else{
-        throw new Exception("Do not live the region file empty");
+        throw new Exception("Do not live the $regionOrcountry file empty");
     }
 }

@@ -34,6 +34,33 @@ class adminModel extends DbConnection{
         }
     }
 
+    public function competitionUpload($competitionName,$competitionImage,$country)
+    {
+
+        $competitionID = uniqid();
+
+        $statement = " INSERT INTO competitions (
+            competition_id,
+            competition_name,
+            competition_image,
+            competition_country
+        )
+            VALUES (
+                '$competitionID',
+                '$competitionName',
+                '$competitionImage',
+                '$country'
+            )
+        
+        ";
+
+        if($this->conn->query($statement) === TRUE){
+            return true;
+        } else{
+            throw new Exception ("unable to upload competition details");
+        }
+    }
+
     public function countryExists($countryName)
     {
         $statement = "SELECT region_name FROM region WHERE region_name = '$countryName' ";

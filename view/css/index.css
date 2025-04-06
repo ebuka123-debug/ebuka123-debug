@@ -31,7 +31,12 @@
 .text-decoration{text-decoration: none;}
 
 .text-dec:hover{background-color: silver;
-                                        color: white;}
+        color: white;
+}
+
+.searched{
+        background-color: #ecebeb;
+        }
 
 .ads{width: 100%;
         height: 50vh;

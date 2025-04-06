@@ -45,7 +45,7 @@ class Route extends Router{
 
                     case "search":
                         $search = new SearchController();
-                        $method = "search";
+                        // $method = "search";
                         $this->ShowPages($search,$method,$parameter);
                     break;
 

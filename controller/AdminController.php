@@ -120,7 +120,7 @@ class AdminController{
                       {
                         $adminModel = new adminModel();
         
-                        if($adminModel->competitionUpload($competitionName,$authCompetitionImage["file_name"],$competitionCountry))
+                        if($adminModel->competitionUpload(trim($competitionName),$authCompetitionImage["file_name"],$competitionCountry))
                         {
                             $_SESSION["competition-uploaded"] = "competition category uploaded successfully";
                             

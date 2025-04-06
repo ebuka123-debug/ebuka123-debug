@@ -1,5 +1,8 @@
 <?php
 if(isset($_SESSION["logged-in"]) || isset($_SESSION['signed-in'])){
+    $adminModel = new adminModel();
+    $region = $adminModel->getRegion();
+    $competitions = $_SESSION["search-result"];
 
 } else{
     
@@ -122,29 +125,35 @@ if(isset($_SESSION["logged-in"]) || isset($_SESSION['signed-in'])){
                 <div class="offcanvas-body">
                     <div class="card ">
                         <div class="card-header text-start text-white fs-5" id="color">Country</div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item"> <input type="search" class="form-control" placeholder="Search" aria-label="Search"></li>
-                            <li class="list-group-item ms-1"><img src="/view/images/france.jpg" class="width"> France</li>
-                            <li class="list-group-item ms-1"><img src="/view/images/germany.jpg" class="width"> Germany</li>
-                            <li class="list-group-item ms-1"><img src="/view/images/italy.jpg" class="width"> Italy</li>
-                            <li class="list-group-item ms-1"><img src="/view/images/holland.jpg" class="width"> Netherland</li>
-                            <li class="list-group-item ms-1"><img src="/view/images/brazil.jpg" class="width"> Brazil</li>
-                            <li class="list-group-item ms-1"><img src="/view/images/argentina.jpg" class="width"> Argentina</li>
-                            <li class="list-group-item ms-1"><img src="/view/images/england-flag.jpg" class="width"> England</li>
-                            <li class="list-group-item ms-1"><img src="/view/images/scotland.jpg" class="width"> Scotland</li>
-                            <li class="list-group-item ms-1"><img src="/view/images/belgium.jpg" class="width"> Belgium</li>
-                            <li class="list-group-item ms-1"><img src="/view/images/australia.jpg" class="width"> Australia</li>
-                            <li class="list-group-item ms-1"><img src="/view/images/champions-league.png" class="width bg-secondary rounded"> Champions league</li>
-                            <li class="list-group-item ms-1"><img src="/view/images/nigeria.jpg" class="width"> Nigeria</li>
-                            <li class="list-group-item ms-1"><img src="/view/images/croatia.jpg" class="width"> Croatia</li>
-                            <li class="list-group-item ms-1"><img src="/view/images/mexico.jpg" class="width"> Mexico</li>
-                            <li class="list-group-item ms-1"><img src="/view/images/denmark.jpg" class="width"> Denmark</li>
-                            <li class="list-group-item ms-1"><img src="/view/images/austria.jpg" class="width"> Austria</li>
-                            <li class="list-group-item ms-1"><img src="/view/images/colombia.jpg" class="width"> Columbia</li>
-                            <li class="list-group-item ms-1"><img src="/view/images/spanish-flag.jpg" class="width"> Spain</li>
-                            <li class="list-group-item ms-1"><img src="/view/images/canada.jpg" class="width"> Canada</li>
-                            <li class="list-group-item ms-1"><img src="/view/images/bulgaria.jpg" class="width"> Bulgaria</li>
-                          </ul>
+                            <ul class="list-group list-group-flush">
+                                <?php if(isset($_SESSION["search-result"])):?>
+                                    <div class="list-group-item">
+                                        <form action="/search/cancel" method="post">
+                                            <div class="input-group">
+                                                <button type="submit" name="search-cancel" class="btn btn-danger input-group-text"><i class="fa fa-chevron-left"></i></button>
+                                                <div class="form-control searched">
+                                                    <span><?=$_SESSION["searched-word"]?></span>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <?php foreach($competitions as $key => $competition): ?>
+                                        <li class="list-group-item ms-1"><img src="/view/images/competition/<?=$competition["competition_image"]?>" class="width"> <?= $competition["competition_name"]?></li>
+                                    <?php endforeach ?>
+                                <?php else:?>
+                                    <div class="list-group-item">
+                                        <form action="/search/search" method="post">
+                                            <div class="input-group">
+                                                <button type="submit" name="search" class="input-group-text btn btn-danger" id="color"><i class="fa fa-search text-white"></i></button>
+                                                <input type="text" name="search-value" class="form-control" placeholder="Search" aria-label="Search">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <?php foreach($region as $key => $regionss): ?>
+                                        <li class="list-group-item ms-1"><img src="/view/images/region/<?=$regionss["country_or_others"]?>/<?=$regionss["region_image"]?>" class="width"> <?= $regionss["region_name"]?></li>
+                                    <?php endforeach ?>
+                                <?php endif?>
+                            </ul>
                     </div>
     
                 </div>
@@ -158,36 +167,35 @@ if(isset($_SESSION["logged-in"]) || isset($_SESSION['signed-in'])){
                 <div class="card ">
                     <div class="card-header text-start text-white fs-5" id="color">Country</div>
                     <ul class="list-group list-group-flush">
-                        <div class="list-group-item">
-                            <form action="/search" method="post">
-                                <div class="input-group">
-                                    <button type="submit" name="submit" class="input-group-text btn btn-danger" id="color"><i class="fa fa-search text-white"></i></button>
-                                    <input type="search" name="search" class="form-control" placeholder="Search" aria-label="Search">
-                                </div>
-                            </form>
-                        </div>
-                        
-                        <li class="list-group-item ms-1"><img src="/view/images/france.jpg" class="width"> France</li>
-                        <li class="list-group-item ms-1"><img src="/view/images/germany.jpg" class="width"> Germany</li>
-                        <li class="list-group-item ms-1"><img src="/view/images/italy.jpg" class="width"> Italy</li>
-                        <li class="list-group-item ms-1"><img src="/view/images/holland.jpg" class="width"> Netherland</li>
-                        <li class="list-group-item ms-1"><img src="/view/images/brazil.jpg" class="width"> Brazil</li>
-                        <li class="list-group-item ms-1"><img src="/view/images/argentina.jpg" class="width"> Argentina</li>
-                        <li class="list-group-item ms-1"><img src="/view/images/england-flag.jpg" class="width"> England</li>
-                        <li class="list-group-item ms-1"><img src="/view/images/scotland.jpg" class="width"> Scotland</li>
-                        <li class="list-group-item ms-1"><img src="/view/images/belgium.jpg" class="width"> Belgium</li>
-                        <li class="list-group-item ms-1"><img src="/view/images/australia.jpg" class="width"> Australia</li>
-                        <li class="list-group-item ms-1"><img src="/view/images/champions-league.png" class="width bg-secondary rounded"> Champions league</li>
-                        <li class="list-group-item ms-1"><img src="/view/images/nigeria.jpg" class="width"> Nigeria</li>
-                        <li class="list-group-item ms-1"><img src="/view/images/croatia.jpg" class="width"> Croatia</li>
-                        <li class="list-group-item ms-1"><img src="/view/images/mexico.jpg" class="width"> Mexico</li>
-                        <li class="list-group-item ms-1"><img src="/view/images/denmark.jpg" class="width"> Denmark</li>
-                        <li class="list-group-item ms-1"><img src="/view/images/austria.jpg" class="width"> Austria</li>
-                        <li class="list-group-item ms-1"><img src="/view/images/colombia.jpg" class="width"> Columbia</li>
-                        <li class="list-group-item ms-1"><img src="/view/images/spanish-flag.jpg" class="width"> Spain</li>
-                        <li class="list-group-item ms-1"><img src="/view/images/canada.jpg" class="width"> Canada</li>
-                        <li class="list-group-item ms-1"><img src="/view/images/bulgaria.jpg" class="width"> Bulgaria</li>
-                      </ul>
+                        <?php if(isset($_SESSION["search-result"])):?>
+                            <div class="list-group-item">
+                                <form action="/search/cancel" method="post">
+                                    <div class="input-group">
+                                        <button type="submit" name="search-cancel" class="btn btn-danger input-group-text"><i class="fa fa-chevron-left"></i></button>
+                                        <div class="form-control searched">
+                                            <span><?=$_SESSION["searched-word"]?></span>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <?php foreach($competitions as $key => $competition): ?>
+                                <li class="list-group-item ms-1"><img src="/view/images/competition/<?=$competition["competition_image"]?>" class="width"> <?= $competition["competition_name"]?></li>
+                            <?php endforeach ?>
+                        <?php else:?>
+                            <div class="list-group-item">
+                                <form action="/search/search" method="post">
+                                    <div class="input-group">
+                                        <button type="submit" name="search" class="input-group-text btn btn-danger" id="color"><i class="fa fa-search text-white"></i></button>
+                                        <input type="text" name="search-value" class="form-control" placeholder="Search" aria-label="Search">
+                                    </div>
+                                </form>
+                            </div>
+                            <?php foreach($region as $key => $regionss): ?>
+                                <li class="list-group-item ms-1"><img src="/view/images/region/<?=$regionss["country_or_others"]?>/<?=$regionss["region_image"]?>" class="width"> <?= $regionss["region_name"]?></li>
+                            <?php endforeach ?>
+                        <?php endif?>
+
+                    </ul>
                 </div>
             </div>
 

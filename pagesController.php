@@ -20,6 +20,7 @@ require_once(__DIR__."/model/userModel.php");
 require_once(__DIR__."/model/newsModel.php");
 require_once(__DIR__."/model/newsDisplayModel.php");
 require_once(__DIR__."/model/adminModel.php");
+require_once(__DIR__."/model/searchModel.php");
 
 //library folder
 require_once(__DIR__."/library/signUp.php");

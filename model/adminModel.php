@@ -32,6 +32,8 @@ class adminModel extends DbConnection{
         } else{
             throw new Exception ("problem while uploading region details");
         }
+
+        $this->conn->close();
     }
 
     public function competitionUpload($competitionName,$competitionImage,$country)
@@ -59,6 +61,8 @@ class adminModel extends DbConnection{
         } else{
             throw new Exception ("unable to upload competition details");
         }
+
+        $this->conn->close();
     }
 
     public function countryExists($countryName)
@@ -76,11 +80,13 @@ class adminModel extends DbConnection{
         } else{
             throw new Exception ("Select a region that has been uploaded"); //This throws an error when the region  or country is not found in the database
         }
+
+        $this->conn->close();
     }
 
     public function country() //This method brings out a particular country / country's name
     {
-        $statement = "SELECT region_name FROM region";
+        $statement = "SELECT region_name FROM region WHERE country_or_others = 'country' ";
         $result = $this->conn->query($statement);
         $countries = [];
 
@@ -94,6 +100,8 @@ class adminModel extends DbConnection{
         } else{
             throw new Exception ("error while selecting");
         }
+
+        $this->conn->close();
     }
 
     public function addNewsImage(array $details)
@@ -169,6 +177,8 @@ class adminModel extends DbConnection{
         if(isset($status) && $status == true){
             return true;
         }
+
+        $this->conn->close();
     }
     public function addNews(array $details)
     {
@@ -269,6 +279,23 @@ class adminModel extends DbConnection{
         }
 
         $this->conn->close();
+    }
+
+    public function getRegion()    //this method gets the regions and display it on the search side (that is in the home page)
+    {
+        $statement = "SELECT region_name, region_image, country_or_others FROM region  ";
+
+        $result = $this->conn->query($statement);
+
+        $region = [];
+        if($result->num_rows > 0){
+            while($rows = $result->fetch_assoc()){
+                array_push($region,$rows);
+            }
+            return $region;
+        } else{
+            throw new Exception ("no region_name found"); //WHen you come accross this change the error message
+        }
     }
 
 
